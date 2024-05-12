@@ -1,0 +1,69 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+yarn.lock
+
+# testing
+coverage
+*.lcov
+.nyc_output
+
+# build
+build/
+public/build/
+dist/
+out/
+generated/
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# mics
+.idea
+.cache/
+.next/
+next-env.d.ts
+.nuxt/
+tmp/
+temp/
+.docusaurus
+*.tsbuildinfo
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# turbo
+.turbo
+
+# vercel
+.vercel
+
+# Sytem Files
+._*
+.DS_Store
+Thumbs.db
+
+# Typescript
+*.tsbuildinfo
+
+# cli changesets
+.changeset/*.md
