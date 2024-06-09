@@ -18,9 +18,9 @@ function mod.transfer(msg)
         Balances[msg.Tags.Recipient] = Balances[msg.Tags.Recipient] + qty
 
         --[[
-      Only Send the notifications to the Sender and Recipient
-      if the Cast tag is not set on the Transfer message
-    ]]
+            Only Send the notifications to the Sender and Recipient
+            if the Cast tag is not set on the Transfer message
+        ]]
         --
         if not msg.Tags.Cast then
             -- Debit-Notice message template, that is sent to the Sender of the transfer

@@ -27,32 +27,17 @@ local mint = require "src.handlers.mint"
 ]]
 --
 
---[[
-    Info
-  ]]
---
+-- Info
 Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), token.info)
 
---[[
-    Balance
-  ]]
---
+-- Balance
 Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), balance.balance)
 
---[[
-    Balances
-  ]]
---
+-- Balances
 Handlers.add('balances', Handlers.utils.hasMatchingTag('Action', 'Balances'), balance.balances)
 
---[[
-    Transfer
-  ]]
---
+-- Transfer
 Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), transfer.transfer)
 
---[[
-    Mint
-  ]]
---
+-- Mint
 Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), mint.mint)
