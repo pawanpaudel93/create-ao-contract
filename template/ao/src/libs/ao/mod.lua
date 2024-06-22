@@ -1,3 +1,5 @@
+local testing = require "arweave.testing"
+
 ---Create a fake `Handlers` variable that `ao` would use in the real code.
 _G.Handlers = {
     ---A storage variable to hold handlers that are added via `Handlers.add()` in
@@ -32,7 +34,7 @@ _G.Handlers = {
 }
 
 _G.ao = {
-    id = nil,
+    id = testing.utils.generateAddress(),
     send = function(args)
         return args
     end,

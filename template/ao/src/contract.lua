@@ -2,6 +2,7 @@ local token = require "src.handlers.token"
 local balance = require "src.handlers.balance"
 local transfer = require "src.handlers.transfer"
 local mint = require "src.handlers.mint"
+local burn = require "src.handlers.burn"
 
 --[[
   This module implements the ao Standard Token Specification.
@@ -28,16 +29,22 @@ local mint = require "src.handlers.mint"
 --
 
 -- Info
-Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), token.info)
+Handlers.add('Info', Handlers.utils.hasMatchingTag('Action', 'Info'), token.info)
+
+-- Total Supply
+Handlers.add('Total-Supply', Handlers.utils.hasMatchingTag('Action', "Total-Supply"), token.totalSupply)
 
 -- Balance
-Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), balance.balance)
+Handlers.add('Balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), balance.balance)
 
 -- Balances
-Handlers.add('balances', Handlers.utils.hasMatchingTag('Action', 'Balances'), balance.balances)
+Handlers.add('Balances', Handlers.utils.hasMatchingTag('Action', 'Balances'), balance.balances)
 
 -- Transfer
-Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), transfer.transfer)
+Handlers.add('Transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), transfer.transfer)
 
 -- Mint
-Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), mint.mint)
+Handlers.add('Mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), mint.mint)
+
+-- Burn
+Handlers.add('Burn', Handlers.utils.hasMatchingTag('Action', 'Burn'), burn.burn)

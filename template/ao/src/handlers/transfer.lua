@@ -1,34 +1,33 @@
 local bint = require "src.libs.bint.mod" (256)
+local utils = require "src.utils.mod"
 
 local mod = {}
 
+
 function mod.transfer(msg)
-    assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
-    assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
+    assert(type(msg.Recipient) == 'string', 'Recipient is required!')
+    assert(type(msg.Quantity) == 'string', 'Quantity is required!')
+    assert(bint.__lt(0, bint(msg.Quantity)), 'Quantity must be greater than 0')
 
-    if not Balances[msg.From] then Balances[msg.From] = 0 end
+    if not Balances[msg.From] then Balances[msg.From] = "0" end
+    if not Balances[msg.Recipient] then Balances[msg.Recipient] = "0" end
 
-    if not Balances[msg.Tags.Recipient] then Balances[msg.Tags.Recipient] = 0 end
-
-    local qty = tonumber(msg.Tags.Quantity)
-    assert(type(qty) == 'number', 'qty must be number')
-
-    if Balances[msg.From] >= qty then
-        Balances[msg.From] = Balances[msg.From] - qty
-        Balances[msg.Tags.Recipient] = Balances[msg.Tags.Recipient] + qty
+    if bint(msg.Quantity) <= bint(Balances[msg.From]) then
+        Balances[msg.From] = utils.subtract(Balances[msg.From], msg.Quantity)
+        Balances[msg.Recipient] = utils.add(Balances[msg.Recipient], msg.Quantity)
 
         --[[
-            Only Send the notifications to the Sender and Recipient
-            if the Cast tag is not set on the Transfer message
-        ]]
+         Only send the notifications to the Sender and Recipient
+         if the Cast tag is not set on the Transfer message
+       ]]
         --
-        if not msg.Tags.Cast then
+        if not msg.Cast then
             -- Debit-Notice message template, that is sent to the Sender of the transfer
             local debitNotice = {
                 Target = msg.From,
                 Action = 'Debit-Notice',
                 Recipient = msg.Recipient,
-                Quantity = tostring(qty),
+                Quantity = msg.Quantity,
                 Data = "You transferred " .. msg.Quantity .. " to " .. msg.Recipient
             }
             -- Credit-Notice message template, that is sent to the Recipient of the transfer
@@ -36,7 +35,7 @@ function mod.transfer(msg)
                 Target = msg.Recipient,
                 Action = 'Credit-Notice',
                 Sender = msg.From,
-                Quantity = tostring(qty),
+                Quantity = msg.Quantity,
                 Data = "You received " .. msg.Quantity .. " from " .. msg.From
             }
 
@@ -55,8 +54,10 @@ function mod.transfer(msg)
         end
     else
         ao.send({
-            Target = msg.Tags.From,
-            Tags = { Action = 'Transfer-Error', ['Message-Id'] = msg.Id, Error = 'Insufficient Balance!' }
+            Target = msg.From,
+            Action = 'Transfer-Error',
+            ['Message-Id'] = msg.Id,
+            Error = 'Insufficient Balance!'
         })
     end
 end

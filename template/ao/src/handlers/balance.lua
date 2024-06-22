@@ -8,8 +8,10 @@ local mod = {}
 function mod.balance(msg)
     local bal = '0'
 
-    -- If not Target is provided, then return the Senders balance
-    if (msg.Tags.Target and Balances[msg.Tags.Target]) then
+    -- If not Recipient is provided, then return the Senders balance
+    if (msg.Tags.Recipient and Balances[msg.Tags.Recipient]) then
+        bal = Balances[msg.Tags.Recipient]
+    elseif msg.Tags.Target and Balances[msg.Tags.Target] then
         bal = Balances[msg.Tags.Target]
     elseif Balances[msg.From] then
         bal = Balances[msg.From]
@@ -19,7 +21,7 @@ function mod.balance(msg)
         Target = msg.From,
         Balance = bal,
         Ticker = Ticker,
-        Account = msg.Tags.Target or msg.From,
+        Account = msg.Tags.Recipient or msg.From,
         Data = bal
     })
 end

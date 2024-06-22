@@ -1,5 +1,7 @@
-local bint = require "src.libs.bint.mod" (256)
-local mod = {}
+local bint  = require "src.libs.bint.mod" (256)
+local utils = require "src.utils.mod"
+
+local mod   = {}
 
 function mod.mint(msg)
     assert(type(msg.Quantity) == 'string', 'Quantity is required!')
@@ -9,7 +11,7 @@ function mod.mint(msg)
 
     if msg.From == ao.id then
         -- Add tokens to the token pool, according to Quantity
-        Balances[msg.From] = tostring(bint.__add(Balances[Owner], msg.Quantity))
+        Balances[msg.From] = utils.add(Balances[ao.id], msg.Quantity)
         ao.send({
             Target = msg.From,
             Data = "Successfully minted " .. msg.Quantity
