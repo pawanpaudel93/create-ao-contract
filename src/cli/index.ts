@@ -21,7 +21,7 @@ const defaultOptions: CliResults = {
   flags: {
     noGit: false,
     noInstall: false,
-    default: false
+    default: false,
   },
 };
 
@@ -103,7 +103,7 @@ export const runCli = async (): Promise<CliResults> => {
             initialValue: !defaultOptions.flags.noInstall,
           });
         },
-      })
+      }),
     },
     {
       onCancel() {
@@ -117,7 +117,7 @@ export const runCli = async (): Promise<CliResults> => {
     flags: {
       ...cliResults.flags,
       noGit: !project.git ?? cliResults.flags.noGit,
-      noInstall: !project.install ?? cliResults.flags.noInstall
+      noInstall: !project.install ?? cliResults.flags.noInstall,
     },
   };
 };

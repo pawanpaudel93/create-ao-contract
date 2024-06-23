@@ -9,11 +9,7 @@ interface CreateProjectOptions {
   noInstall: boolean;
 }
 
-export const createProject = async ({
-  projectName,
-  scopedAppName,
-  noInstall
-}: CreateProjectOptions) => {
+export const createProject = async ({ projectName, scopedAppName, noInstall }: CreateProjectOptions) => {
   const pkgManager = getUserPkgManager();
   const projectDir = path.resolve(process.cwd(), projectName);
 
@@ -23,7 +19,7 @@ export const createProject = async ({
     projectDir,
     pkgManager,
     scopedAppName,
-    noInstall
+    noInstall,
   });
 
   return projectDir;

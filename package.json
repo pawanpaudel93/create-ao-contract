@@ -13,8 +13,7 @@
   "homepage": "https://github.com/pawanpaudel93/create-ao-contract#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pawanpaudel93/create-ao-contract",
-    "directory": "apps/cli"
+    "url": "https://github.com/pawanpaudel93/create-ao-contract"
   },
   "keywords": [
     "create-ao-contract",
@@ -40,7 +39,6 @@
   "scripts": {
     "typecheck": "tsc",
     "build": "tsup",
-    "build:templates": "node scripts/template.mjs",
     "dev": "tsup --watch",
     "start": "node dist/index.js",
     "lint": "eslint . --ext .ts,.tsx",

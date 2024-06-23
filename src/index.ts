@@ -44,7 +44,7 @@ const main = async () => {
   const projectDir = await createProject({
     projectName: appDir,
     scopedAppName,
-    noInstall
+    noInstall,
   });
 
   // Write name to package.json
@@ -68,9 +68,6 @@ const main = async () => {
   if (!noInstall) {
     showInstallCommand = await installDependencies({ projectDir });
   }
-
-  // Rename _eslintrc.json to .eslintrc.json - we use _eslintrc.json to avoid conflicts with the monorepos linter
-  fs.renameSync(path.join(projectDir, "_eslintrc.json"), path.join(projectDir, ".eslintrc.json"));
 
   if (!noGit) {
     await initializeGit(projectDir);

@@ -1,13 +1,13 @@
 {
   "name": "my-ao-contract",
   "version": "1.0.0",
-  "type": "module",
   "license": "MIT",
   "scripts": {
     "deploy": "ao-deploy aod.config.js",
     "test": "arweave test ."
   },
+  "type": "module",
   "dependencies": {
-    "ao-deploy": "^0.2.0"
+    "ao-deploy": "^0.2.2"
   }
 }

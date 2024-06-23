@@ -177,3 +177,7 @@ dist
 /lua
 /lua_modules
 /.luarocks
+
+
+# Package manager
+*.lockb
