@@ -1,15 +1,34 @@
 # my-ao-contract
 
+## Prerequisites
+
+1. Make sure you have [Lua](https://www.lua.org/start.html#installing) and [LuaRocks](https://github.com/luarocks/luarocks/wiki/Download) installed.
+
+2. Install [arweave](https://luarocks.org/modules/lunarmodules/busted) using LuaRocks for testing purposes.
+
+    ```bash
+    luarocks install arweave
+    ```
+
+3. Install [Lua Language Server](https://luals.github.io/#install) to make development easier, safer, and faster!. On VSCode, install extension: [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
+    - **[Recommended]** Install AO & Busted addon using Lua Addon Manager. On VSCode, goto `View > Command Palette > Lua: Open Addon Manager`
+
+## Usage
+
 To install dependencies:
 
 ```bash
-bun install
+npm install
 ```
 
-To run:
+To run tests:
 
 ```bash
-bun run index.ts
+npm run test
 ```
 
-This project was created using `bun init` in bun v1.1.8. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To deploy contract:
+
+```bash
+npm run deploy
+```

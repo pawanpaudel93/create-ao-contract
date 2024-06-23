@@ -64,6 +64,21 @@ const main = async () => {
     spaces: 2,
   });
 
+  // Update aod.config.js
+  let aodConfig = fs.readFileSync(path.join(projectDir, "aod.config.js"), "utf-8");
+  aodConfig = aodConfig.replaceAll("my_ao_contract", `"${scopedAppName}"`).replaceAll("my-ao-contract", scopedAppName);
+  fs.writeFileSync(path.join(projectDir, "aod.config.js"), aodConfig);
+
+  // Update README.md
+  let readmeContent = fs.readFileSync(path.join(projectDir, "README.md"), "utf-8");
+  readmeContent = readmeContent.replaceAll("my-ao-contract", scopedAppName);
+  if (pkgManager === "yarn" || pkgManager === "pnpm") {
+    readmeContent = readmeContent.replaceAll("npm run", pkgManager)
+  } else if (pkgManager === "bun") {
+    readmeContent = readmeContent.replaceAll("npm", "bun")
+  }
+  fs.writeFileSync(path.join(projectDir, "README.md"), readmeContent);
+
   let showInstallCommand = noInstall;
   if (!noInstall) {
     showInstallCommand = await installDependencies({ projectDir });

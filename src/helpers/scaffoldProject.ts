@@ -63,7 +63,7 @@ export const scaffoldProject = async ({ projectName, projectDir, pkgManager, noI
       }
 
       if (overwriteDir === "clear") {
-        spinner.info(`Emptying ${chalk.cyan.bold(projectName)} and creating arweave app..\n`);
+        spinner.info(`Emptying ${chalk.cyan.bold(projectName)} and creating ao contract..\n`);
         fs.emptyDirSync(projectDir);
       }
     }

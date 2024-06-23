@@ -35,8 +35,8 @@ export const runCli = async (): Promise<CliResults> => {
 
   const program = new Command()
     .name(CLI_NAME)
-    .description("A CLI for creating full-stack Arweave web applications")
-    .argument("[dir]", "The name of the application, as well as the name of the directory to create", (value) => {
+    .description("A CLI for creating an AO contract")
+    .argument("[dir]", "The name of the contract, as well as the name of the directory to create", (value) => {
       if (value !== defaultOptions.appName) {
         const nameValidation = validateAppName(value);
         if (nameValidation) {
@@ -58,7 +58,7 @@ export const runCli = async (): Promise<CliResults> => {
     )
     .option(
       "-y, --default",
-      "Bypass the CLI and Use default options to bootstrap a new Arweave app. Note: Default options can be overridden by user-provided options.",
+      "Bypass the CLI and Use default options to bootstrap a new AO contract. Note: Default options can be overridden by user-provided options.",
       defaultOptions.flags.default
     )
     .version(getVersion(), "-v, --version", "Display the version number")
