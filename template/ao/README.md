@@ -4,7 +4,7 @@
 
 1. Make sure you have [Lua](https://www.lua.org/start.html#installing) and [LuaRocks](https://github.com/luarocks/luarocks/wiki/Download) installed.
 
-2. Install [arweave](https://luarocks.org/modules/lunarmodules/busted) using LuaRocks for testing purposes.
+2. Install [arweave](https://luarocks.org/modules/crookse/arweave) using LuaRocks for testing purposes.
 
     ```bash
     luarocks install arweave
