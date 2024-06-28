@@ -2,7 +2,7 @@ local testing = require "arweave.testing"
 local json = require "src.libs.json.mod"
 local utils = require "src.utils.mod"
 
-require "src.libs.ao.mod"
+require "src.libs.testing.ao"
 require "src.contract"
 
 ao = mock(ao)
@@ -119,6 +119,16 @@ describe("Token", function()
 
         assert.spy(ao.send).was.called_with(expectedCreditNotice)
         assert.spy(ao.send).was.called_with(expectedDebitNotice)
+    end)
+
+    test("Transfer Fail", function()
+        local msg = {
+            From = ao.id,
+            Recipient = testing.utils.generateAddress(),
+            Quantity = utils.toBalanceValue(0 ^ Denomination)
+        }
+
+        assert.has_error(function() Handlers.__handlers_added["Transfer"](msg) end, 'Quantity must be greater than 0')
     end)
 
     test("Mint", function()
