@@ -1,6 +1,20 @@
 # Create AO Contract
 
-A CLI to create an AO contract.
+A CLI tool for scaffolding AO contracts, featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) for testing and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
+
+## Table of Contents
+
+- [Usage](#usage)
+  - [Interactive Mode](#interactive)
+    - [npm](#npm)
+    - [yarn](#yarn)
+    - [pnpm](#pnpm)
+    - [bun](#bun)
+  - [Non-interactive Mode](#non-interactive)
+    - [Options](#options)
+    - [Example Commands](#example-commands)
+- [Credits](#credits)
+- [License](#license)
 
 ## Usage
 
@@ -8,7 +22,7 @@ A CLI to create an AO contract.
 
 To scaffold an AO contract interactively, run the following command based on your package manager of choice:
 
-### npm
+#### npm
 
 ```bash
 npx create-ao-contract@latest
@@ -16,19 +30,19 @@ npx create-ao-contract@latest
 npm create ao-contract@latest
 ```
 
-### yarn
+#### yarn
 
 ```bash
 yarn create ao-contract
 ```
 
-### pnpm
+#### pnpm
 
 ```bash
 pnpm create ao-contract@latest
 ```
 
-### bun
+#### bun
 
 ```bash
 bunx create-ao-contract@latest
@@ -48,6 +62,8 @@ For a non-interactive setup, use command line arguments. You can view available 
 create-ao-contract --help
 ```
 
+#### Options
+
 ```bash
 Usage: create-ao-contract [dir] [options]
 
@@ -65,7 +81,9 @@ Options:
   -h, --help     display help for command
 ```
 
-You can quickly scaffold an AO contract using the CLI with the default options by running:
+#### Example Commands
+
+Quickly scaffold an AO contract using the CLI with the default options by running:
 
 ```bash
 npx create-ao-contract@latest -y
@@ -77,7 +95,7 @@ pnpm create ao-contract@latest -y
 bunx create-ao-contract@latest -y
 ```
 
-You can also quickly scaffold by overriding the default options by passing the other options as well:
+Override the default options by passing other options:
 
 ```bash
 npx create-ao-contract@latest my-ao-contract --noGit --default
