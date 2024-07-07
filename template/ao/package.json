@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "ao-deploy aod.config.js",
-    "test": "arweave test ."
+    "test": "arweave test . --lpath='./src/?.lua;./src/?/?.lua;./src/?/init.lua;AOS_PROCESS_PATH/?.lua'"
   },
   "type": "module",
   "dependencies": {

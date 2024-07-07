@@ -8,12 +8,12 @@ AO contract created using [create-ao-contract](https://github.com/pawanpaudel93/
 
 2. Install [arweave](https://luarocks.org/modules/crookse/arweave) using LuaRocks for testing purposes.
 
-    ```bash
-    luarocks install arweave
-    ```
+   ```bash
+   luarocks install arweave
+   ```
 
 3. **[Recommended]** Install [Lua Language Server](https://luals.github.io/#install) to make development easier, safer, and faster!. On VSCode, install extension: [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
-    - Install AO & Busted addon using Lua Addon Manager. On VSCode, goto `View > Command Palette > Lua: Open Addon Manager`
+   - Install AO & Busted addon using Lua Addon Manager. On VSCode, goto `View > Command Palette > Lua: Open Addon Manager`
 
 ## Usage
 

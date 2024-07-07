@@ -21,6 +21,7 @@ import { initializeGit } from "@/helpers/git.js";
 import { installDependencies } from "@/helpers/installDependencies.js";
 import { logNextSteps } from "@/helpers/logNextSteps.js";
 import { getNpmVersion, renderVersionWarning } from "@/utils/renderVersionWarning.js";
+import { getAosProcessPath } from "./utils/getAosProcessPath.js";
 
 type CPAPackageJSON = PackageJson & {
   caaMetadata?: {
@@ -50,6 +51,7 @@ const main = async () => {
   // Write name to package.json
   const pkgJson = fs.readJSONSync(path.join(projectDir, "package.json")) as CPAPackageJSON;
   pkgJson.name = scopedAppName;
+  pkgJson.scripts!.test = pkgJson.scripts?.test?.replace("AOS_PROCESS_PATH", getAosProcessPath());
   pkgJson.cacMetadata = { initVersion: getVersion() };
 
   // ? Bun doesn't support this field (yet)
@@ -73,9 +75,9 @@ const main = async () => {
   let readmeContent = fs.readFileSync(path.join(projectDir, "README.md"), "utf-8");
   readmeContent = readmeContent.replaceAll("my-ao-contract", scopedAppName);
   if (pkgManager === "yarn" || pkgManager === "pnpm") {
-    readmeContent = readmeContent.replaceAll("npm run", pkgManager)
+    readmeContent = readmeContent.replaceAll("npm run", pkgManager);
   } else if (pkgManager === "bun") {
-    readmeContent = readmeContent.replaceAll("npm", "bun")
+    readmeContent = readmeContent.replaceAll("npm", "bun");
   }
   fs.writeFileSync(path.join(projectDir, "README.md"), readmeContent);
 

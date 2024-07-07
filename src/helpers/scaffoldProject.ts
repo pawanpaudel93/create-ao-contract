@@ -7,6 +7,7 @@ import ora from "ora";
 import { PKG_ROOT } from "@/constants.js";
 import { logger } from "@/utils/logger.js";
 import { type InstallerOptions } from "@/installers/index.js";
+import { downloadAosProcess } from "./downloadAosProcess.js";
 
 // This bootstraps the base Next.js application
 export const scaffoldProject = async ({ projectName, projectDir, pkgManager, noInstall }: InstallerOptions) => {
@@ -72,6 +73,9 @@ export const scaffoldProject = async ({ projectName, projectDir, pkgManager, noI
   spinner.start();
 
   fs.copySync(srcDir, projectDir);
+
+  // download AOS process
+  await downloadAosProcess(projectDir);
 
   const scaffoldedName = projectName === "." ? "App" : chalk.cyan.bold(projectName);
 
