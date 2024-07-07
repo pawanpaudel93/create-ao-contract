@@ -1,4 +1,4 @@
-local json = require "src.libs.json.mod"
+local json = require "json"
 
 local mod = {}
 

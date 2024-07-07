@@ -1,8 +1,9 @@
 local testing = require "arweave.testing"
-local json = require "src.libs.json.mod"
+local json = require "json"
 local utils = require "src.utils.mod"
+local testUtils = require "tests.utils"
 
-require "src.libs.testing.ao"
+require "ao-process"
 require "src.contract"
 
 ao = mock(ao)
@@ -26,14 +27,14 @@ describe("Token", function()
             From = testing.utils.generateAddress()
         }
 
-        Handlers.__handlers_added["Info"](msg)
+        testUtils.sendMessageToHandler("Info", msg)
 
         local expectedOutput = {
             Target = msg.From,
             Name = Name,
             Ticker = Ticker,
             Denomination = tostring(Denomination),
-            Logo = Logo
+            Logo = Logo,
         }
 
         assert.spy(ao.send).was.called_with(expectedOutput)
@@ -44,7 +45,7 @@ describe("Token", function()
             From = testing.utils.generateAddress()
         }
 
-        Handlers.__handlers_added["Total-Supply"](msg)
+        testUtils.sendMessageToHandler("Total-Supply", msg)
 
         local expectedOutput = {
             Target = msg.From,
@@ -64,7 +65,7 @@ describe("Token", function()
             }
         }
 
-        Handlers.__handlers_added["Balance"](msg)
+        testUtils.sendMessageToHandler("Balance", msg)
 
         local expectedOutput = {
             Target = msg.From,
@@ -82,7 +83,7 @@ describe("Token", function()
             From = testing.utils.generateAddress(),
         }
 
-        Handlers.__handlers_added["Balances"](msg)
+        testUtils.sendMessageToHandler("Balances", msg)
 
         local expectedOutput = {
             Target = msg.From,
@@ -99,7 +100,7 @@ describe("Token", function()
             Quantity = utils.toBalanceValue(5000 * 10 ^ Denomination)
         }
 
-        Handlers.__handlers_added["Transfer"](msg)
+        testUtils.sendMessageToHandler("Transfer", msg)
 
         local expectedCreditNotice = {
             Target = msg.Recipient,
@@ -128,7 +129,8 @@ describe("Token", function()
             Quantity = utils.toBalanceValue(0 ^ Denomination)
         }
 
-        assert.has_error(function() Handlers.__handlers_added["Transfer"](msg) end, 'Quantity must be greater than 0')
+        assert.has_error(function() testUtils.sendMessageToHandler("Transfer", msg) end,
+            'Quantity must be greater than 0')
     end)
 
     test("Mint", function()
@@ -139,7 +141,7 @@ describe("Token", function()
 
         local prevBalance = Balances[msg.From] or "0"
 
-        Handlers.__handlers_added["Mint"](msg)
+        testUtils.sendMessageToHandler("Mint", msg)
 
         local expectedOutput = {
             Target = msg.From,
@@ -158,7 +160,7 @@ describe("Token", function()
 
         local prevBalance = Balances[msg.From] or "0"
 
-        Handlers.__handlers_added["Burn"](msg)
+        testUtils.sendMessageToHandler("Burn", msg)
 
         local expectedOutput = {
             Target = msg.From,
