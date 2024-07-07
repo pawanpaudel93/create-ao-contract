@@ -71,15 +71,11 @@ export async function downloadAosProcess(projectDir: string) {
       }
     }
 
-    // Copy json.lua
-    const jsonFileDst = path.join(destinationDir, "json.lua");
-    const jsonFileSrc = path.join(projectDir, "src", "libs", "json", "json.lua");
-    await fse.copy(jsonFileSrc, jsonFileDst);
-
     // Copy everything inside testing Directory
     const testingDir = path.join(projectDir, "src", "libs", "testing");
     await fse.copy(testingDir, destinationDir);
     await fse.remove(testingDir);
+
     return true;
   } catch (error: any) {
     return false;

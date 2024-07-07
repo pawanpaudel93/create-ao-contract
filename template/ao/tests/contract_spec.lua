@@ -1,5 +1,5 @@
 local testing = require "arweave.testing"
-local json = require "src.libs.json.mod"
+local json = require "json"
 local utils = require "src.utils.mod"
 local testUtils = require "tests.utils"
 

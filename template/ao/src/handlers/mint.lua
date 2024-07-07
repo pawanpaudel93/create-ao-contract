@@ -1,4 +1,4 @@
-local bint  = require "src.libs.bint.mod" (256)
+local bint  = require('.bint')(256)
 local utils = require "src.utils.mod"
 
 local mod   = {}
