@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.0.0
+
+### Major Changes
+
+- [#3](https://github.com/pawanpaudel93/create-ao-contract/pull/3) [`9405044`](https://github.com/pawanpaudel93/create-ao-contract/commit/94050440ffec3a8bf5a377b1441c2e0afbc24c4a) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - feat: Add AO process for testing purposes
+
 ## 0.0.2
 
 ### Patch Changes
