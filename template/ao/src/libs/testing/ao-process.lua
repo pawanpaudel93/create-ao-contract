@@ -1,5 +1,8 @@
 local ao = require(".ao")
-require(".process")
+
+_G.ao = ao
+
+local mod = {}
 
 ---Generate a valid Arweave address
 ---@return string
@@ -20,6 +23,23 @@ local function generateAddress()
 
     return id
 end
+
+function mod.initialize(msg, env)
+    -- by requiring '.process' here we are able to reload via .updates
+    local process = require ".process"
+
+    ao.init(env)
+
+    -- relocate custom tags to root message
+    msg = ao.normalize(msg)
+
+    -- handle process
+    pcall(function() return (process.handle(msg, ao)) end)
+end
+
+local processId = generateAddress()
+local from = generateAddress()
+local owner = from
 
 local env = {
     Module = {
@@ -119,9 +139,23 @@ local env = {
                 value = "aoconnect"
             }
         },
-        Owner = generateAddress(),
-        Id = generateAddress()
+        Owner = owner,
+        Id = processId
     }
 }
 
-ao.init(env)
+mod.initialize(
+    {
+        Id = generateAddress(),
+        Tags = env.Process.Tags,
+        From = from,
+        Owner = owner,
+        Target = processId,
+        Data = "",
+        ["Block-Height"] = 1469769,
+        Module = env.Process.Tags.Module
+    },
+    env
+)
+
+return mod

@@ -73,6 +73,13 @@ export async function downloadAosProcess(projectDir: string) {
 
     // Copy everything inside testing Directory
     const testingDir = path.join(projectDir, "src", "libs", "testing");
+    const aoResponse = await fetchWithRetry(
+      "https://raw.githubusercontent.com/permaweb/ao/main/dev-cli/container/src/ao.lua",
+      maxRetries,
+      retryDelay
+    )
+    const aoCode = await aoResponse?.text()
+    await fse.writeFile(path.join(testingDir, "ao.lua"), aoCode!)
     await fse.copy(testingDir, destinationDir);
     await fse.remove(testingDir);
 
