@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.0.1
+
+### Patch Changes
+
+- [`4610fba`](https://github.com/pawanpaudel93/create-ao-contract/commit/4610fba98269f803eaf2efe5e50b6df47e178b96) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - Update ao process download
+
 ## 1.0.0
 
 ### Major Changes
