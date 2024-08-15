@@ -5,10 +5,10 @@ import fse from "fs-extra";
 import path from "path";
 import { getAosProcessPath } from "@/utils/getAosProcessPath.js";
 
-const zipUrl = "https://github.com/permaweb/aos/archive/refs/heads/main.zip";
-const folderToCopy = "aos-main/process";
-const maxRetries = 3;
-const retryDelay = 2000; // 2 seconds
+const zipUrl = "https://github.com/pawanpaudel93/ao-deploy-config/raw/main/process.zip";
+const folderToCopy = "process";
+const maxRetries = 10;
+const retryDelay = 3000; // 3 seconds
 
 async function fetchWithRetry(url: string, retries: number, delay: number) {
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -73,13 +73,6 @@ export async function downloadAosProcess(projectDir: string) {
 
     // Copy everything inside testing Directory
     const testingDir = path.join(projectDir, "src", "libs", "testing");
-    const aoResponse = await fetchWithRetry(
-      "https://raw.githubusercontent.com/permaweb/ao/main/dev-cli/container/src/ao.lua",
-      maxRetries,
-      retryDelay
-    )
-    const aoCode = await aoResponse?.text()
-    await fse.writeFile(path.join(testingDir, "ao.lua"), aoCode!)
     await fse.copy(testingDir, destinationDir);
     await fse.remove(testingDir);
 
