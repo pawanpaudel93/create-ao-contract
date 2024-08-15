@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.0.2
+
+### Patch Changes
+
+- [#6](https://github.com/pawanpaudel93/create-ao-contract/pull/6) [`01b940a`](https://github.com/pawanpaudel93/create-ao-contract/commit/01b940a96029449266d6bf259143e89b3489c292) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - fix: Download aos process correctly
+
 ## 1.0.1
 
 ### Patch Changes
