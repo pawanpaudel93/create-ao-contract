@@ -11,20 +11,20 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v4
         with:
           node-version: 18.x
 
-      - name: Install bun Dependencies
-        run: bun install --no-frozen-lockfile
+      - name: Install pnpm Dependencies
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build the package
-        run: bun run build
+        run: pnpm build
 
       - name: Create Release Pull Request or Publish
         id: changesets
