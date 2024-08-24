@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.0.3
+
+### Patch Changes
+
+- [#8](https://github.com/pawanpaudel93/create-ao-contract/pull/8) [`21bc86e`](https://github.com/pawanpaudel93/create-ao-contract/commit/21bc86ecc201162ab1e679f227aebd5e494fa107) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - chode: update ao-deploy package version
+
 ## 1.0.2
 
 ### Patch Changes
