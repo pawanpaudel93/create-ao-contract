@@ -1,5 +1,4 @@
 ---@meta _
-
 ---@alias Balances table<string, string>
 ---@alias TotalSupply string
 ---@alias Name string

@@ -181,3 +181,6 @@ dist
 
 # Package manager
 *.lockb
+
+# ao-deploy
+dist

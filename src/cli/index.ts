@@ -85,7 +85,10 @@ export const runCli = async (): Promise<CliResults> => {
             message: "What will your project be called?",
             defaultValue: defaultOptions.appName,
             placeholder: defaultOptions.appName,
-            validate: validateAppName,
+            validate: (value) => {
+              if (!value) return;
+              return validateAppName(value);
+            },
           }),
       }),
       ...(cliResults.flags.noGit === defaultOptions.flags.noGit && {

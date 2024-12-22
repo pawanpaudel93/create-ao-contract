@@ -1,6 +1,6 @@
 # my-ao-contract
 
-AO contract created using [create-ao-contract](https://github.com/pawanpaudel93/create-ao-contract) featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) for testing and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
+AO contract created using [create-ao-contract](https://github.com/pawanpaudel93/create-ao-contract) featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) and [WAO](https://github.com/weavedb/wao) for testing and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
 
 ## Prerequisites
 
@@ -33,4 +33,16 @@ To deploy contract:
 
 ```bash
 npm run deploy
+```
+
+To format the code:
+
+```bash
+npm run format
+```
+
+To lint the code:
+
+```bash
+npm run lint
 ```

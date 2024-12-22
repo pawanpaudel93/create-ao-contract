@@ -51,7 +51,8 @@ const main = async () => {
   // Write name to package.json
   const pkgJson = fs.readJSONSync(path.join(projectDir, "package.json")) as CPAPackageJSON;
   pkgJson.name = scopedAppName;
-  pkgJson.scripts!.test = pkgJson.scripts?.test?.replace("AOS_PROCESS_PATH", getAosProcessPath());
+  pkgJson.scripts!["test-lua"] = pkgJson.scripts?.["test-lua"]?.replace("AOS_PROCESS_PATH", getAosProcessPath());
+  pkgJson.scripts!["test-js"] = pkgJson.scripts?.["test-js"]?.replace("npm", pkgManager);
   pkgJson.cacMetadata = { initVersion: getVersion() };
 
   // ? Bun doesn't support this field (yet)

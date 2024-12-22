@@ -5,5 +5,6 @@ export default defineConfig({
     name: "my-ao-contract",
     contractPath: "src/contract.lua",
     luaPath: "./src/?.lua",
+    outDir: "./dist",
   },
 });

@@ -1,3 +1,3 @@
-local crypto = require('.crypto.init')
+local crypto = require(".crypto.init")
 
 return crypto
