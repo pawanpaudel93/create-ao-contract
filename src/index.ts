@@ -72,6 +72,11 @@ const main = async () => {
   aodConfig = aodConfig.replaceAll("my_ao_contract", `"${scopedAppName}"`).replaceAll("my-ao-contract", scopedAppName);
   fs.writeFileSync(path.join(projectDir, "aod.config.js"), aodConfig);
 
+  // Update test/contract_test.js
+  let testContent = fs.readFileSync(path.join(projectDir, "test", "contract_test.js"), "utf-8");
+  testContent = testContent.replaceAll("my-ao-contract", scopedAppName);
+  fs.writeFileSync(path.join(projectDir, "test", "contract_test.js"), testContent);
+
   // Update README.md
   let readmeContent = fs.readFileSync(path.join(projectDir, "README.md"), "utf-8");
   readmeContent = readmeContent.replaceAll("my-ao-contract", scopedAppName);
