@@ -1,7 +1,7 @@
 local testing = require "arweave.testing"
 local json = require "json"
 local utils = require "src.utils.mod"
-local testUtils = require "tests.utils"
+local testUtils = require "test.utils"
 
 require "ao-process"
 require "src.contract"

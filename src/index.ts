@@ -51,7 +51,8 @@ const main = async () => {
   // Write name to package.json
   const pkgJson = fs.readJSONSync(path.join(projectDir, "package.json")) as CPAPackageJSON;
   pkgJson.name = scopedAppName;
-  pkgJson.scripts!.test = pkgJson.scripts?.test?.replace("AOS_PROCESS_PATH", getAosProcessPath());
+  pkgJson.scripts!["test-lua"] = pkgJson.scripts?.["test-lua"]?.replace("AOS_PROCESS_PATH", getAosProcessPath());
+  pkgJson.scripts!["test-js"] = pkgJson.scripts?.["test-js"]?.replace("npm", pkgManager);
   pkgJson.cacMetadata = { initVersion: getVersion() };
 
   // ? Bun doesn't support this field (yet)
@@ -70,6 +71,11 @@ const main = async () => {
   let aodConfig = fs.readFileSync(path.join(projectDir, "aod.config.js"), "utf-8");
   aodConfig = aodConfig.replaceAll("my_ao_contract", `"${scopedAppName}"`).replaceAll("my-ao-contract", scopedAppName);
   fs.writeFileSync(path.join(projectDir, "aod.config.js"), aodConfig);
+
+  // Update test/contract_test.js
+  let testContent = fs.readFileSync(path.join(projectDir, "test", "contract_test.js"), "utf-8");
+  testContent = testContent.replaceAll("my-ao-contract", scopedAppName);
+  fs.writeFileSync(path.join(projectDir, "test", "contract_test.js"), testContent);
 
   // Update README.md
   let readmeContent = fs.readFileSync(path.join(projectDir, "README.md"), "utf-8");

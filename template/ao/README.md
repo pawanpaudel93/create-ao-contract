@@ -1,36 +1,80 @@
 # my-ao-contract
 
-AO contract created using [create-ao-contract](https://github.com/pawanpaudel93/create-ao-contract) featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) for testing and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
+AO contract created using [create-ao-contract](https://github.com/pawanpaudel93/create-ao-contract), featuring:
+
+- 🧪 **Testing**: [Busted](https://luarocks.org/modules/lunarmodules/busted) and [WAO](https://github.com/weavedb/wao) for testing
+- 🛠️ **Development Tools**: [arweave](https://github.com/crookse/arweave-lua) for testing, formatting and linting
+- 📦 **Deployment**: Seamless deployment using [ao-deploy](https://github.com/pawanpaudel93/ao-deploy)
 
 ## Prerequisites
 
-1. Make sure you have [Lua](https://www.lua.org/start.html#installing) and [LuaRocks](https://github.com/luarocks/luarocks/wiki/Download) installed.
+1. Install [Lua](https://www.lua.org/start.html#installing) and [LuaRocks](https://github.com/luarocks/luarocks/wiki/Download).
 
-2. Install [arweave](https://luarocks.org/modules/crookse/arweave) using LuaRocks for testing purposes.
+2. **Install Dependencies**:
 
    ```bash
+   # Install Arweave Lua package
    luarocks install arweave
+
+   # Install project dependencies
+   npm install
    ```
 
-3. **[Recommended]** Install [Lua Language Server](https://luals.github.io/#install) to make development easier, safer, and faster!. On VSCode, install extension: [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
-   - Install AO & Busted addon using Lua Addon Manager. On VSCode, goto `View > Command Palette > Lua: Open Addon Manager`
+   **Note**: `arweave` package relies on `busted` for its testing capabilities.
 
-## Usage
+3. **IDE Setup (Recommended)**:
+   - Install [VSCode](https://code.visualstudio.com/)
+   - Add the [Lua Language Server](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension.
+   - Install AO & Busted addons via Command Palette (`View > Command Palette > Lua: Open Addon Manager`)
 
-To install dependencies:
+## Development
 
-```bash
-npm install
-```
-
-To run tests:
+To run tests, use:
 
 ```bash
 npm run test
 ```
 
-To deploy contract:
+To deploy the contract, use:
 
 ```bash
 npm run deploy
 ```
+
+To format the code, use:
+
+```bash
+npm run format
+```
+
+To lint the code, use:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+my-ao-contract/
+├── src/            # Contract source code
+├── test/           # Test files
+├── scripts/        # Utility scripts
+├── aod.config.js   # ao-deploy configuration
+└── package.json    # Project configuration
+```
+
+## Contributing
+
+If you wish to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
+
+## Acknowledgments
+
+- Created using [create-ao-contract](https://github.com/pawanpaudel93/create-ao-contract)
+- Built for [AO](https://ao.arweave.net/)
