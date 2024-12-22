@@ -1,6 +1,6 @@
 # Create AO Contract
 
-A CLI tool for scaffolding AO contracts, featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) and [WAO](https://github.com/weavedb/wao) for testing and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
+A CLI tool for scaffolding AO contracts, featuring [Busted](https://luarocks.org/modules/lunarmodules/busted) and [WAO](https://github.com/weavedb/wao) for testing, and seamless deployment via [ao-deploy](https://github.com/pawanpaudel93/ao-deploy).
 
 ## Table of Contents
 
