@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.1.0
+
+### Minor Changes
+
+- [`30ee146`](https://github.com/pawanpaudel93/create-ao-contract/commit/30ee1467f2d5537d9cd2d15356672fbb7cac5d70) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - WAO integration
+
 ## 1.0.3
 
 ### Patch Changes
