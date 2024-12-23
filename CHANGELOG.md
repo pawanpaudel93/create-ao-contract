@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.1.2
+
+### Patch Changes
+
+- [`33d5c98`](https://github.com/pawanpaudel93/create-ao-contract/commit/33d5c98e01b918caf9eda3a79888acac2e6a705d) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - fix: remove testing dir finally
+
 ## 1.1.1
 
 ### Patch Changes
