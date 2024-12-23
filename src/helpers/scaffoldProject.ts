@@ -9,7 +9,7 @@ import { logger } from "@/utils/logger.js";
 import { type InstallerOptions } from "@/installers/index.js";
 import { downloadAosProcess } from "./downloadAosProcess.js";
 
-// This bootstraps the base Next.js application
+// This bootstraps the base ao contract
 export const scaffoldProject = async ({ projectName, projectDir, pkgManager, noInstall }: InstallerOptions) => {
   const srcDir = path.join(PKG_ROOT, `template/ao`);
 
