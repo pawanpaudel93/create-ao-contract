@@ -27,10 +27,10 @@ describe("Token", function () {
   beforeEach(async () => {
     sender = acc[0];
     ao = await new AO().init(sender);
-    const src_data = getContractSrcData();
+    const src = getContractSrcData();
     const result = await ao.deploy({
-      src_data,
       tags: { Name: "Points Coin" },
+      loads: [src, "Name = 'Points Coin'"],
     });
     p = result.p;
     pid = result.pid;
@@ -46,8 +46,7 @@ describe("Token", function () {
       },
     });
     assert.deepEqual(out, {
-      // Name: "Points Coin",
-      Name: "aos",
+      Name: "Points Coin",
       Ticker: "PNTS",
       Logo: "SBCCXwwecBlDqRLUjb8dYABExTJXLieawf7m2aBJ-KY",
       Denomination: "12",
