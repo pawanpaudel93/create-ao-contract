@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.1.1
+
+### Patch Changes
+
+- [`b567b07`](https://github.com/pawanpaudel93/create-ao-contract/commit/b567b07e0c2196d132cb581173a92b6c625bde82) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - fix: update wao test
+
 ## 1.1.0
 
 ### Minor Changes
