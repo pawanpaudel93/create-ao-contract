@@ -1,5 +1,11 @@
 # create-ao-contract
 
+## 1.1.4
+
+### Patch Changes
+
+- [`901cee1`](https://github.com/pawanpaudel93/create-ao-contract/commit/901cee16d45ad8709b1df188b9ea6ce8d53e6cf1) Thanks [@pawanpaudel93](https://github.com/pawanpaudel93)! - update ao-deploy package version
+
 ## 1.1.3
 
 ### Patch Changes
